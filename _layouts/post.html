@@ -1,0 +1,67 @@
+---
+layout: default
+---
+
+<div id="contact">
+        <div class="container">
+               
+           <nav id="menu" data-toggle="offcanvas" data-target=".navmenu">
+                <span class="fa fa-bars"></span>
+           </nav>
+           
+         
+            <div class="section-title text-center">
+                <h7>{{ page.title }}</h7>
+                <hr>
+            </div>
+            
+            <div class="space"></div>
+            
+            <img src="{{ page.cover }}" style="height: 100%; width: 100%; object-fit: contain">
+            
+            <div class="space"></div>
+
+                <h13>{{ content }}</h13>
+
+            
+            <br><br>
+            <hr>
+            <div class="section-title text-center">
+                <h9><p class="meta">{{ page.date | date_to_string }}</p></h9>
+            </div>
+            
+            
+            <div class="row">
+<div class="col-md-8 col-md-offset-2">
+<div class="row">
+<div class="col-md-12">
+        
+            {% for post in site.categories.blog %}
+        {% if post.url == page.url %}
+            {% assign post_index0 = forloop.index0 %}
+            {% assign post_index1 = forloop.index %}
+        {% endif %}
+    {% endfor %}
+    {% for post in site.categories.blog %}
+        {% if post_index0 == forloop.index %}
+            {% assign next_post = post.url %}
+        {% endif %}
+        {% if post_index1 == forloop.index0 %}
+            {% assign prev_post = post.url %}
+        {% endif %}
+    {% endfor %}
+    {% if next_post %}
+        <p style="text-align:right;"><h13><a href="{{ next_post }}">Next Post</a></h13>
+    {% endif %}
+    {% if prev_post %}
+        <span style="float:left;"><h13><a href="{{ prev_post }}">Previous Post</a></h13></span>
+</p><br>
+    {% endif %}
+    
+    </div>
+    </div>
+    </div>
+    </div>
+            
+                </div>
+            </div>
